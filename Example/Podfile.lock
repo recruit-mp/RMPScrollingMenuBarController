@@ -12,6 +12,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: f9f225b5ba11c8d8c09075590490df16314e4d62
-  RMPScrollingMenuBarController: cda7a03f7b4c8aff0b54ddfc73a6c278fe9d41b3
+  RMPScrollingMenuBarController: 999113f544cf43dc54a8d7b82705ceeee9d42fd6
 
 COCOAPODS: 0.34.4
