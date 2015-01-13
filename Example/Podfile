@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'RMPScrollingMenuBarController', :exclusive => true do
+  pod "RMPScrollingMenuBarController", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "RMPScrollingMenuBarController", :path => "../"
+
+  pod 'FBSnapshotTestCase'
+end
