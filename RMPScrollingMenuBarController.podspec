@@ -10,7 +10,7 @@
 Pod::Spec.new do |s|
   s.name             = "RMPScrollingMenuBarController"
   s.version          = "1.0.0"
-  s.summary          = "A short description of RMPScrollingMenuBarController."
+  s.summary          = "A scrollable menu bar and multiple view controllers, which is managed like a UITabBarController."
   s.description      = <<-DESC
                       `RMPScrollingMenuBarController` has a scrollable menu bar, and multiple view controllers.
 
