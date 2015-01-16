@@ -89,7 +89,15 @@
         if (_interactionController.percentComplete > 0.25f) {
             [_interactionController finishInteractiveTransition];
         } else {
-            [_interactionController cancelInteractiveTransition];
+            NSLog(@"canceling");
+            if(_interactionController){
+                // be disabled recognizing pan gesture during animation for canceling transition.
+                _panGesture.enabled = NO;
+                [_interactionController cancelInteractiveTransitionWithCompletion:^{
+                    _panGesture.enabled = YES;
+                    NSLog(@"canceled");
+                }];
+            }
         }
         _interactionController = nil;
     }
@@ -118,6 +126,8 @@
     id<UIViewControllerContextTransitioning> _context;
 
     CADisplayLink* _displayLink;
+    
+    RMPScrollingMenuBarControllerInteractionControllerCancelCompletionBlock _completion;
 }
 
 - (instancetype)initWithAnimator:(id<UIViewControllerAnimatedTransitioning>)animator
@@ -144,8 +154,10 @@
     [_context updateInteractiveTransition:percentComplete];
 }
 
-- (void)cancelInteractiveTransition
+- (void)cancelInteractiveTransitionWithCompletion:(RMPScrollingMenuBarControllerInteractionControllerCancelCompletionBlock)completion
 {
+    _completion = completion;
+    
     _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateCancelAnimation)];
     [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 }
@@ -192,6 +204,10 @@
         [fromViewController.view.layer removeAllAnimations];
 
         [_context cancelInteractiveTransition];
+        
+        if(_completion){
+            _completion();
+        }
     }else {
         _context.containerView.layer.timeOffset = timeOffset;
     }

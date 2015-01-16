@@ -171,7 +171,7 @@
 #pragma mark - Private
 - (void)transitionToViewController:(UIViewController*)toViewController
 {
-    UIViewController *fromViewController = ([self.childViewControllers count] > 0 ? self.childViewControllers[0] : nil);
+    UIViewController *fromViewController = _selectedViewController;
     // Do nothing if toViewController equals to fromViewController.
     if (toViewController == fromViewController || !_containerView) {
         return;

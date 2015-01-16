@@ -23,6 +23,7 @@
 #import "RMPScrollingMenuBarControllerAnimator.h"
 
 typedef void(^RMPScrollingMenuBarControllerTransitionContextCompletionBlock)(BOOL didComplete);
+typedef void(^RMPScrollingMenuBarControllerInteractionControllerCancelCompletionBlock)();
 
 /** Transition Delegate Object for view transitioning of Scrolling menu bar controller.
  */
@@ -42,7 +43,7 @@ typedef void(^RMPScrollingMenuBarControllerTransitionContextCompletionBlock)(BOO
 - (instancetype)initWithAnimator:(id<UIViewControllerAnimatedTransitioning>)animator;
 - (void)startInteractiveTransition:(id<UIViewControllerContextTransitioning>)context;
 - (void)updateInteractiveTransition:(CGFloat)percentComplete;
-- (void)cancelInteractiveTransition;
+- (void)cancelInteractiveTransitionWithCompletion:(RMPScrollingMenuBarControllerInteractionControllerCancelCompletionBlock)completion;
 - (void)finishInteractiveTransition;
 
 - (UIViewAnimationCurve)completionCurve;
