@@ -18,7 +18,6 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		9236191F1A5A3BED00A3754E /* UIViewController+RMPScrollingMenuBarControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 923619191A5A3BED00A3754E /* UIViewController+RMPScrollingMenuBarControllerHelper.m */; };
 		923619241A5A3C3F00A3754E /* RMPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 923619211A5A3C3F00A3754E /* RMPAppDelegate.m */; };
 		923619251A5A3C3F00A3754E /* RMPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 923619231A5A3C3F00A3754E /* RMPViewController.m */; };
 		923619281A5A7E9100A3754E /* RMPPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 923619271A5A7E9100A3754E /* RMPPageViewController.m */; };
@@ -57,18 +56,6 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		73629C15F21DCFD6D407690F /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9236190E1A5A3BED00A3754E /* RMPScrollingMenuBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPScrollingMenuBar.h; path = ../../../Pod/Classes/RMPScrollingMenuBar.h; sourceTree = "<group>"; };
-		9236190F1A5A3BED00A3754E /* RMPScrollingMenuBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPScrollingMenuBar.m; path = ../../../Pod/Classes/RMPScrollingMenuBar.m; sourceTree = "<group>"; };
-		923619101A5A3BED00A3754E /* RMPScrollingMenuBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPScrollingMenuBarController.h; path = ../../../Pod/Classes/RMPScrollingMenuBarController.h; sourceTree = "<group>"; };
-		923619111A5A3BED00A3754E /* RMPScrollingMenuBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPScrollingMenuBarController.m; path = ../../../Pod/Classes/RMPScrollingMenuBarController.m; sourceTree = "<group>"; };
-		923619121A5A3BED00A3754E /* RMPScrollingMenuBarControllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPScrollingMenuBarControllerAnimator.h; path = ../../../Pod/Classes/RMPScrollingMenuBarControllerAnimator.h; sourceTree = "<group>"; };
-		923619131A5A3BED00A3754E /* RMPScrollingMenuBarControllerAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPScrollingMenuBarControllerAnimator.m; path = ../../../Pod/Classes/RMPScrollingMenuBarControllerAnimator.m; sourceTree = "<group>"; };
-		923619141A5A3BED00A3754E /* RMPScrollingMenuBarControllerTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPScrollingMenuBarControllerTransition.h; path = ../../../Pod/Classes/RMPScrollingMenuBarControllerTransition.h; sourceTree = "<group>"; };
-		923619151A5A3BED00A3754E /* RMPScrollingMenuBarControllerTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPScrollingMenuBarControllerTransition.m; path = ../../../Pod/Classes/RMPScrollingMenuBarControllerTransition.m; sourceTree = "<group>"; };
-		923619161A5A3BED00A3754E /* RMPScrollingMenuBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPScrollingMenuBarItem.h; path = ../../../Pod/Classes/RMPScrollingMenuBarItem.h; sourceTree = "<group>"; };
-		923619171A5A3BED00A3754E /* RMPScrollingMenuBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPScrollingMenuBarItem.m; path = ../../../Pod/Classes/RMPScrollingMenuBarItem.m; sourceTree = "<group>"; };
-		923619181A5A3BED00A3754E /* UIViewController+RMPScrollingMenuBarControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+RMPScrollingMenuBarControllerHelper.h"; path = "../../../Pod/Classes/UIViewController+RMPScrollingMenuBarControllerHelper.h"; sourceTree = "<group>"; };
-		923619191A5A3BED00A3754E /* UIViewController+RMPScrollingMenuBarControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+RMPScrollingMenuBarControllerHelper.m"; path = "../../../Pod/Classes/UIViewController+RMPScrollingMenuBarControllerHelper.m"; sourceTree = "<group>"; };
 		923619201A5A3C3F00A3754E /* RMPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPAppDelegate.h; path = RMPScrollingMenuBarController/Classes/RMPAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		923619211A5A3C3F00A3754E /* RMPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPAppDelegate.m; path = RMPScrollingMenuBarController/Classes/RMPAppDelegate.m; sourceTree = SOURCE_ROOT; };
 		923619221A5A3C3F00A3754E /* RMPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPViewController.h; path = RMPScrollingMenuBarController/Classes/RMPViewController.h; sourceTree = SOURCE_ROOT; };
@@ -144,7 +131,6 @@
 		6003F593195388D20070C39A /* RMPScrollingMenuBarController */ = {
 			isa = PBXGroup;
 			children = (
-				923618F91A5A3B5800A3754E /* Pod Classes */,
 				923425831A4D66B6001E56FC /* Classes */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -204,26 +190,6 @@
 			);
 			name = Classes;
 			path = ../Classes;
-			sourceTree = "<group>";
-		};
-		923618F91A5A3B5800A3754E /* Pod Classes */ = {
-			isa = PBXGroup;
-			children = (
-				9236190E1A5A3BED00A3754E /* RMPScrollingMenuBar.h */,
-				9236190F1A5A3BED00A3754E /* RMPScrollingMenuBar.m */,
-				923619101A5A3BED00A3754E /* RMPScrollingMenuBarController.h */,
-				923619111A5A3BED00A3754E /* RMPScrollingMenuBarController.m */,
-				923619121A5A3BED00A3754E /* RMPScrollingMenuBarControllerAnimator.h */,
-				923619131A5A3BED00A3754E /* RMPScrollingMenuBarControllerAnimator.m */,
-				923619141A5A3BED00A3754E /* RMPScrollingMenuBarControllerTransition.h */,
-				923619151A5A3BED00A3754E /* RMPScrollingMenuBarControllerTransition.m */,
-				923619161A5A3BED00A3754E /* RMPScrollingMenuBarItem.h */,
-				923619171A5A3BED00A3754E /* RMPScrollingMenuBarItem.m */,
-				923619181A5A3BED00A3754E /* UIViewController+RMPScrollingMenuBarControllerHelper.h */,
-				923619191A5A3BED00A3754E /* UIViewController+RMPScrollingMenuBarControllerHelper.m */,
-			);
-			name = "Pod Classes";
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		ED37F408D7D1CB8F744576F6 /* Pods */ = {
@@ -402,7 +368,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				923619251A5A3C3F00A3754E /* RMPViewController.m in Sources */,
-				9236191F1A5A3BED00A3754E /* UIViewController+RMPScrollingMenuBarControllerHelper.m in Sources */,
 				923619241A5A3C3F00A3754E /* RMPAppDelegate.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				923619281A5A7E9100A3754E /* RMPPageViewController.m in Sources */,
