@@ -89,13 +89,11 @@
         if (_interactionController.percentComplete > 0.25f) {
             [_interactionController finishInteractiveTransition];
         } else {
-            NSLog(@"canceling");
             if(_interactionController){
                 // be disabled recognizing pan gesture during animation for canceling transition.
                 _panGesture.enabled = NO;
                 [_interactionController cancelInteractiveTransitionWithCompletion:^{
                     _panGesture.enabled = YES;
-                    NSLog(@"canceled");
                 }];
             }
         }
