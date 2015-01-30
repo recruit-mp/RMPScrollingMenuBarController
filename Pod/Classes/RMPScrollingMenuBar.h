@@ -55,7 +55,7 @@
 
 /** Selected menu item.
  */
-@property (nonatomic, assign)RMPScrollingMenuBarItem* selectedItem;
+@property (nonatomic, weak)RMPScrollingMenuBarItem* selectedItem;
 
 /** Color of indicator which be displayed under selected menu item.
  */

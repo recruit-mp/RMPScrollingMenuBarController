@@ -100,6 +100,7 @@
 - (void)setItems:(NSArray *)items animated:(BOOL)animated
 {
     CGRect f;
+    _selectedItem = nil;
     _items = [items copy];
 
     // Clear all of menu items.
