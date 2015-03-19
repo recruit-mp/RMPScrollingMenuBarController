@@ -57,9 +57,9 @@
 {
     if(!_itemButton){
         RMPScrollingMenuBarButton* button = [RMPScrollingMenuBarButton button];
-        _itemButton.frame = CGRectMake(0, 0, _width, 24);
         _itemButton = button;
         _itemButton.tag = self.tag;
+        _itemButton.frame = CGRectMake(0, 0, _width, 24);
 
         _itemButton.titleLabel.font = [UIFont systemFontOfSize:16.0];
         [_itemButton setTitle:self.title
