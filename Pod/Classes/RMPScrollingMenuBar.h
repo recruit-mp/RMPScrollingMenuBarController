@@ -57,9 +57,19 @@
  */
 @property (nonatomic, weak)RMPScrollingMenuBarItem* selectedItem;
 
+/** A Boolean value that controls whether the indicator is visible or not. 
+    Default value is YES.
+ */
+@property (nonatomic, assign)BOOL showsIndicator;
+
 /** Color of indicator which be displayed under selected menu item.
  */
 @property (nonatomic, strong)UIColor* indicatorColor;
+
+/** A Boolean value that controls whether the separator line is visible or not.
+ Default value is YES.
+ */
+@property (nonatomic, assign)BOOL showsSeparatorLine;
 
 /** Setter of menu items.
  */

@@ -69,6 +69,9 @@
 #pragma mark -
 - (void)setup
 {
+    _showsIndicator = YES;
+    _showsSeparatorLine = YES;
+    
     _barHeight = kRMPMenuBarDefaultBarHeight;
     _itemInsets = UIEdgeInsetsZero;
     _indicatorColor = [UIColor colorWithRed:0.988 green:0.224 blue:0.129 alpha:1.000];
@@ -163,7 +166,7 @@
         }
     }
 
-    if(!_selectedItem){
+    if(!_selectedItem && _items.count > 0){
         [self setSelectedItem:_items[0]];
     }
 }
@@ -249,6 +252,27 @@
         _indicatorView.backgroundColor = _indicatorColor;
     }
 }
+
+- (void)setBarHeight:(CGFloat)barHeight
+{
+    _barHeight = barHeight;
+    
+    [self sizeToFit];
+    [self layoutIfNeeded];
+}
+
+- (void)setShowsIndicator:(BOOL)showsIndicator
+{
+    _showsIndicator = showsIndicator;
+    _indicatorView.hidden = !_showsIndicator;
+}
+
+- (void)setShowsSeparatorLine:(BOOL)showsSeparatorLine
+{
+    _showsSeparatorLine = showsSeparatorLine;
+    _border.hidden = !_showsSeparatorLine;
+}
+
 
 #pragma mark - button action
 - (void)didTapMenuButton:(id)sender
