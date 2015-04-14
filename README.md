@@ -70,9 +70,78 @@ Delegate methods are as below:
 
 ```
 
+## Customize
+
+You can customize menu bar, as below:  
+```objective-c
+RMPScrollingMenuBarController* menuController = [[RMPScrollingMenuBarController alloc] init];
+
+// Sets background color.
+menuController.view.backgroundColor = [UIColor whiteColor];
+
+// Sets color of indicator line which displayed under menu bar item.
+menuController.menuBar.indicatorColor = [UIColor blueColor];
+
+// Hides indicator line which displayed under menu bar item.
+menuController.menuBar.showsIndicator = NO;
+
+// Hides Separator line which displayed bottom of menu bar.
+menuController.menuBar.showsSeparatorLine = NO;
+
+```
+
+Also you can customize buttons of menu bar item by implementing delegate methods, as below:  
+```objective-c
+
+- (RMPScrollingMenuBarItem*)menuBarController:(RMPScrollingMenuBarController *)menuBarController
+                           menuBarItemAtIndex:(NSInteger)index
+{
+    RMPScrollingMenuBarItem* item = [[RMPScrollingMenuBarItem alloc] init];
+    item.title = titles[index];
+
+    // Customize appearance of menu bar item.
+    UIButton* button = item.button;
+    [button setTitleColor:[UIColor lightGrayColor]
+                 forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor grayColor]
+                 forState:UIControlStateDisabled];
+    [button setTitleColor:[UIColor greenColor]
+                 forState:UIControlStateSelected];
+    
+    return item;
+}
+
+```
+
+## Infinite paging
+Enables infinite paging mode, as below:  
+```objective-c
+RMPScrollingMenuBarController* menuController = [[RMPScrollingMenuBarController alloc] init];
+menuController.menuBar.style = RMPScrollingMenuBarStyleInfinitePaging;
+
+```
+
+
 ## Requirements
 
 - iOS 7.0 or higher 
+
+## Change Log
+
+### 1.0.6 
+- Adds infinite paging mode.
+  
+### 1.0.5
+- Adds properties for customizing appearance.
+
+### 1.0.4
+- Fixes crash issue.
+
+### 1.0.1 ~ 1.0.3
+- Fixes minor issues.
+
+### 1.0.0
+- First release.
 
 ## Contribution
 
