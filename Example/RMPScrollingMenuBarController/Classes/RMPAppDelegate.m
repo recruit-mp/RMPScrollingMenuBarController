@@ -75,6 +75,9 @@
     // Customize appearance of menu bar.
     menuController.view.backgroundColor = [UIColor whiteColor];
     menuController.menuBar.indicatorColor = [UIColor blueColor];
+    //menuController.menuBar.style = RMPScrollingMenuBarStyleInfinitePaging;
+    //menuController.menuBar.showsIndicator = NO;
+    //menuController.menuBar.showsSeparatorLine = NO;
 
     // Set ViewControllers for menu bar controller
     NSMutableArray* viewControllers = [NSMutableArray array];

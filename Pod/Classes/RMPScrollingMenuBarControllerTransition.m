@@ -60,21 +60,41 @@
     if (gesture.state == UIGestureRecognizerStateBegan) {
         CGPoint location = [gesture locationInView:view];
         if (location.x <  CGRectGetMidX(view.bounds)
-            && _menuBarController.viewControllers.count > 1
-            && _menuBarController.selectedIndex > 0) {
+            && _menuBarController.viewControllers.count > 1) {
             // to left side menu item.
-            _direction = RMPScrollingMenuBarControllerDirectionLeft;
-            _interactionController = [[RMPScrollingMenuBarControllerInteractionController alloc] initWithAnimator:_animator];
-            UIViewController* vc = _menuBarController.viewControllers[_menuBarController.selectedIndex-1];
-            [_menuBarController setSelectedViewController:vc];
+            if(_menuBarController.menuBar.style == RMPScrollingMenuBarStyleNormal
+               && _menuBarController.selectedIndex > 0){
+                _direction = RMPScrollingMenuBarControllerDirectionLeft;
+                _interactionController = [[RMPScrollingMenuBarControllerInteractionController alloc] initWithAnimator:_animator];
+                UIViewController* vc = _menuBarController.viewControllers[_menuBarController.selectedIndex-1];
+                [_menuBarController setSelectedViewController:vc];
+            }else if(_menuBarController.menuBar.style == RMPScrollingMenuBarStyleInfinitePaging
+                     && _menuBarController.selectedIndex >= 0){
+                _direction = RMPScrollingMenuBarControllerDirectionLeft;
+                _interactionController = [[RMPScrollingMenuBarControllerInteractionController alloc] initWithAnimator:_animator];
+                NSInteger index = _menuBarController.selectedIndex-1;
+                if(index < 0) index = _menuBarController.viewControllers.count - 1;
+                UIViewController* vc = _menuBarController.viewControllers[index];
+                [_menuBarController setSelectedViewController:vc];
+            }
         }else if(location.x >=  CGRectGetMidX(view.bounds)
-                 && _menuBarController.viewControllers.count > 1
-                 && _menuBarController.selectedIndex < [_menuBarController.viewControllers count]-1){
+                 && _menuBarController.viewControllers.count > 1){
             // to right side menu item.
-            _direction = RMPScrollingMenuBarControllerDirectionRight;
-            _interactionController = [[RMPScrollingMenuBarControllerInteractionController alloc] initWithAnimator:_animator];
-            UIViewController* vc = _menuBarController.viewControllers[_menuBarController.selectedIndex+1];
-            [_menuBarController setSelectedViewController:vc];
+            if(_menuBarController.menuBar.style == RMPScrollingMenuBarStyleNormal
+               && _menuBarController.selectedIndex < [_menuBarController.viewControllers count]-1){
+                _direction = RMPScrollingMenuBarControllerDirectionRight;
+                _interactionController = [[RMPScrollingMenuBarControllerInteractionController alloc] initWithAnimator:_animator];
+                UIViewController* vc = _menuBarController.viewControllers[_menuBarController.selectedIndex+1];
+                [_menuBarController setSelectedViewController:vc];
+            }else if(_menuBarController.menuBar.style == RMPScrollingMenuBarStyleInfinitePaging
+                     && _menuBarController.selectedIndex <= [_menuBarController.viewControllers count]-1){
+                _direction = RMPScrollingMenuBarControllerDirectionRight;
+                _interactionController = [[RMPScrollingMenuBarControllerInteractionController alloc] initWithAnimator:_animator];
+                NSInteger index = _menuBarController.selectedIndex+1;
+                if(index > _menuBarController.viewControllers.count - 1) index = 0;
+                UIViewController* vc = _menuBarController.viewControllers[index];
+                [_menuBarController setSelectedViewController:vc];
+            }
         }
     } else if (gesture.state == UIGestureRecognizerStateChanged) {
         CGPoint translation = [gesture translationInView:view];
@@ -85,8 +105,8 @@
             [_interactionController updateInteractiveTransition:d];
         }
     } else if (gesture.state == UIGestureRecognizerStateEnded) {
-        //If progress is less than 25%, Cancel transition.
-        if (_interactionController.percentComplete > 0.25f) {
+        //If progress is less than 15%, Cancel transition.
+        if (_interactionController.percentComplete > 0.15f) {
             [_interactionController finishInteractiveTransition];
         } else {
             if(_interactionController){

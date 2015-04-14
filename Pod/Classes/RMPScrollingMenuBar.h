@@ -23,6 +23,11 @@
 
 #define kRMPMenuBarDefaultBarHeight 36.0f
 
+typedef NS_ENUM(NSUInteger, RMPScrollingMenuBarStyle) {
+    RMPScrollingMenuBarStyleNormal,
+    RMPScrollingMenuBarStyleInfinitePaging,
+};
+
 @class RMPScrollingMenuBar;
 
 /** ScrollingMenuBar's delegate protocol
@@ -70,6 +75,8 @@
  Default value is YES.
  */
 @property (nonatomic, assign)BOOL showsSeparatorLine;
+
+@property (nonatomic, assign)RMPScrollingMenuBarStyle style;
 
 /** Setter of menu items.
  */
