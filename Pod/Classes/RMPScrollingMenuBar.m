@@ -351,7 +351,6 @@
     }
     
     if(!_selectedItem){
-        //_infinitePagingCurrentIndex = 0;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self setSelectedItem:_items[0] animated:NO];
         });
