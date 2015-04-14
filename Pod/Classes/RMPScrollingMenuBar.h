@@ -76,6 +76,8 @@ typedef NS_ENUM(NSUInteger, RMPScrollingMenuBarStyle) {
  */
 @property (nonatomic, assign)BOOL showsSeparatorLine;
 
+/* The menu bar style that specifies its behaviour.
+ */
 @property (nonatomic, assign)RMPScrollingMenuBarStyle style;
 
 /** Setter of menu items.
