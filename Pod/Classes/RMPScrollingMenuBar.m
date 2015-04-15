@@ -414,7 +414,7 @@
             }else if((NSInteger)(_selectedItem.button.frame.origin.x - _itemInsets.left) > (NSInteger)_scrollView.contentOffset.x){
                 offset = CGPointMake(_infinitePagingOffsetX + _infinitePagingBoundsWidth, 0.0);
             }else {
-                offset = CGPointMake(_infinitePagingOffsetX, 0.0);
+                offset = _scrollView.contentOffset;
             }
         }else {
             offset = CGPointMake(_selectedItem.button.frame.origin.x - _itemInsets.left, 0.0);
