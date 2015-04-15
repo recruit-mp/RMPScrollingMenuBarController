@@ -458,6 +458,7 @@
             f.size.width = _selectedItem.button.frame.size.width + 6;
             _indicatorView.frame = f;
             
+            _infinitePagingIsTappedItem = NO;
             _scrollView.userInteractionEnabled = YES;
         });
     }
