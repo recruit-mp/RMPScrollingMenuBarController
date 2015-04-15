@@ -210,6 +210,14 @@
     if(toIndex > fromIndex){
         direction = RMPScrollingMenuBarControllerDirectionRight;
     }
+    
+    if(self.menuBar.style == RMPScrollingMenuBarStyleInfinitePaging){
+        if(toIndex == 0 && fromIndex == _viewControllers.count-1){
+            direction = RMPScrollingMenuBarControllerDirectionRight;
+        }else if(toIndex == _viewControllers.count-1 && fromIndex == 0){
+            direction = RMPScrollingMenuBarControllerDirectionLeft;
+        }
+    }
 
     id<UIViewControllerAnimatedTransitioning> animator = nil;
     if ([_transitionDelegate respondsToSelector:@selector(menuBarController:animationControllerForDirection:fromViewController:toViewController:)]) {
