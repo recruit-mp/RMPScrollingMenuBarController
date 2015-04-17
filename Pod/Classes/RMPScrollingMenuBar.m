@@ -423,11 +423,11 @@
     CGPoint newPosition = CGPointZero;
     if(_style == RMPScrollingMenuBarStyleNormal){
         if(_selectedItem.button.center.x > _scrollView.bounds.size.width*0.5
-           && _scrollView.contentSize.width - _selectedItem.button.center.x > _scrollView.bounds.size.width*0.5){
+           && (NSInteger)(_scrollView.contentSize.width - _selectedItem.button.center.x) >= (NSInteger)(_scrollView.bounds.size.width*0.5)){
             offset = CGPointMake(_selectedItem.button.center.x - _scrollView.frame.size.width*0.5, 0);
         }else if(_selectedItem.button.center.x < _scrollView.bounds.size.width*0.5){
             offset = CGPointMake(0, 0);
-        }else if(_scrollView.contentSize.width - _selectedItem.button.center.x < _scrollView.bounds.size.width*0.5){
+        }else if((NSInteger)(_scrollView.contentSize.width - _selectedItem.button.center.x) < (NSInteger)(_scrollView.bounds.size.width*0.5)){
             offset = CGPointMake(_scrollView.contentSize.width-_scrollView.bounds.size.width, 0);
         }
         [_scrollView setContentOffset:offset animated:animated];
