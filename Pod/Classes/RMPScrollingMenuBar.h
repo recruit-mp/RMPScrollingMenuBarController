@@ -28,13 +28,19 @@ typedef NS_ENUM(NSUInteger, RMPScrollingMenuBarStyle) {
     RMPScrollingMenuBarStyleInfinitePaging,
 };
 
+typedef NS_ENUM(NSInteger, RMPScrollingMenuBarDirection){
+    RMPScrollingMenuBarDirectionNone,
+    RMPScrollingMenuBarDirectionLeft,
+    RMPScrollingMenuBarDirectionRight,
+};
+
 @class RMPScrollingMenuBar;
 
 /** ScrollingMenuBar's delegate protocol
  */
 @protocol RMPScrollingMenuBarDelegate <NSObject>
 
-- (void)menuBar:(RMPScrollingMenuBar*)menuBar didSelectItem:(RMPScrollingMenuBarItem*)item;
+- (void)menuBar:(RMPScrollingMenuBar*)menuBar didSelectItem:(RMPScrollingMenuBarItem*)item direction:(RMPScrollingMenuBarDirection)direction;
 
 @end
 
@@ -80,9 +86,16 @@ typedef NS_ENUM(NSUInteger, RMPScrollingMenuBarStyle) {
  */
 @property (nonatomic, assign)RMPScrollingMenuBarStyle style;
 
+@property (nonatomic, readonly)CGFloat scrollOffsetX;
+
 /** Setter of menu items.
  */
 - (void)setItems:(NSArray *)items animated:(BOOL)animated;
+
+/** Scrolls menu bar by a ratio of the width of the item
+    Move to right item by setting to 1.0, Also Move to left item by setting to -1.0.
+ */
+- (void)scrollByRatio:(CGFloat)ratio from:(CGFloat)from;
 
 
 @end

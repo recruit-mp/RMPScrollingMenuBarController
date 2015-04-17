@@ -101,4 +101,9 @@
     _itemButton.selected = selected;
 }
 
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"<RMPScrollingMenuItem: %@ %@>", self.title, NSStringFromCGRect(self.button.frame)];
+}
+
 @end
