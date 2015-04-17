@@ -215,7 +215,9 @@
 
         _context.containerView.layer.speed = self.completionSpeed;
         _context.containerView.layer.timeOffset = 0.0;
-
+        
+        [_context updateInteractiveTransition:timeOffset/[_animator transitionDuration:_context]];
+        
         UIViewController* toViewController = [_context viewControllerForKey:UITransitionContextToViewControllerKey];
         [toViewController.view.layer removeAllAnimations];
         UIViewController* fromViewController = [_context viewControllerForKey:UITransitionContextFromViewControllerKey];
@@ -228,6 +230,8 @@
         }
     }else {
         _context.containerView.layer.timeOffset = timeOffset;
+        
+        [_context updateInteractiveTransition:timeOffset/[_animator transitionDuration:_context]];
     }
 }
 
@@ -245,6 +249,8 @@
     CGRect _appearingFromRect;
     CGRect _disappearingToRect;
     CGRect _disappearingFromRect;
+    
+    CGFloat _fromOffsetX;
 }
 
 - (instancetype)initWithMenuBarController:(RMPScrollingMenuBarController*)menuBarControlller
@@ -291,7 +297,14 @@
 
 - (void)updateInteractiveTransition:(CGFloat)percentComplete
 {
+    if(!_animated){
+        _fromOffsetX = _menuBarController.menuBar.scrollOffsetX;
+    }
+    
     _animated = YES;
+    
+    [_menuBarController.menuBar scrollByRatio:percentComplete * ((_direction == RMPScrollingMenuBarControllerDirectionRight) ? 1 : -1)
+                                         from:_fromOffsetX];
 }
 
 - (void)finishInteractiveTransition

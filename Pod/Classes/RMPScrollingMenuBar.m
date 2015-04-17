@@ -381,6 +381,33 @@
                      }];
 }
 
+- (CGFloat)scrollOffsetX
+{
+    return _scrollView.contentOffset.x;
+}
+
+- (void)scrollByRatio:(CGFloat)ratio from:(CGFloat)from {
+    if(_style == RMPScrollingMenuBarStyleNormal){
+        NSInteger index = [_items indexOfObject:_selectedItem];
+        NSInteger ignoreCount = (NSInteger)(_scrollView.frame.size.width*0.5/(_scrollView.contentSize.width/_items.count));
+        for(NSInteger i = 0; i < ignoreCount; i++){
+            if (index == i){
+                return;
+            }else if (index == _items.count-1-i){
+                return;
+            }
+        }
+        if(index == ignoreCount && ratio < 0.0){
+            return;
+        }else if(index == _items.count-1-ignoreCount && ratio > 0.0){
+            return;
+        }
+    }
+    
+    _scrollView.contentOffset = CGPointMake(from + _scrollView.contentSize.width/_items.count*ratio, 0);
+    NSLog(@"scrollByRatio %0.2f, %0.2f", ratio, _scrollView.contentOffset.x);
+}
+
 - (void)setSelectedItem:(RMPScrollingMenuBarItem *)selectedItem
 {
     [self setSelectedItem:selectedItem animated:YES];

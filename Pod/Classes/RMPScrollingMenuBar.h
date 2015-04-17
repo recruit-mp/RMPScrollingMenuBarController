@@ -86,9 +86,16 @@ typedef NS_ENUM(NSInteger, RMPScrollingMenuBarDirection){
  */
 @property (nonatomic, assign)RMPScrollingMenuBarStyle style;
 
+@property (nonatomic, readonly)CGFloat scrollOffsetX;
+
 /** Setter of menu items.
  */
 - (void)setItems:(NSArray *)items animated:(BOOL)animated;
+
+/** Scrolls menu bar by a ratio of the width of the item
+    Move to right item by setting to 1.0, Also Move to left item by setting to -1.0.
+ */
+- (void)scrollByRatio:(CGFloat)ratio from:(CGFloat)from;
 
 
 @end
