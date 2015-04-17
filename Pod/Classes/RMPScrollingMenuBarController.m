@@ -29,6 +29,8 @@
     NSArray* _items;
 
     RMPScrollingMenuBarControllerTransition* _transition;
+    
+    RMPScrollingMenuBarDirection _menuBarDirection;
 }
 
 
@@ -145,11 +147,7 @@
     }
     _items = [NSArray arrayWithArray:items];
 
-    if(!animated){
-        [_menuBar setItems:_items animated:YES];
-    }else {
-        [_menuBar setItems:_items animated:NO];
-    }
+    [_menuBar setItems:_items animated:animated];
 }
 
 - (void)setSelectedViewController:(UIViewController *)selectedViewController
@@ -217,6 +215,13 @@
         }else if(toIndex == _viewControllers.count-1 && fromIndex == 0){
             direction = RMPScrollingMenuBarControllerDirectionLeft;
         }
+        
+        if(_menuBarDirection == RMPScrollingMenuBarDirectionRight){
+            direction = RMPScrollingMenuBarControllerDirectionRight;
+        }else if(_menuBarDirection == RMPScrollingMenuBarDirectionLeft){
+            direction = RMPScrollingMenuBarControllerDirectionLeft;
+        }
+        _menuBarDirection = RMPScrollingMenuBarDirectionNone;
     }
 
     id<UIViewControllerAnimatedTransitioning> animator = nil;
@@ -284,8 +289,9 @@
 
     // Update menu bar.
     RMPScrollingMenuBarItem* item = _menuBar.items[_selectedIndex];
-    [_menuBar setSelectedItem:item];
-    _menuBar.userInteractionEnabled = YES;
+    if(item != _menuBar.selectedItem){
+        [_menuBar setSelectedItem:item];
+    }
 
     // Call delegate method.
     if(lastIndex != _selectedIndex || lastViewController != _selectedViewController){
@@ -297,15 +303,18 @@
             [_delegate menuBarController:self didCancelViewController:cancelViewController];
         }
     }
+    
+    _menuBar.userInteractionEnabled = YES;
 }
 
 #pragma mark - RMPScrollingMenuBarDelegate
-- (void)menuBar:(RMPScrollingMenuBar*)menuBar didSelectItem:(RMPScrollingMenuBarItem*)item
+- (void)menuBar:(RMPScrollingMenuBar*)menuBar didSelectItem:(RMPScrollingMenuBarItem*)item direction:(RMPScrollingMenuBarDirection)direction
 {
     NSInteger index = [_items indexOfObject:item];
     if(index != NSNotFound
        && index != self.selectedIndex){
         // Switch view controller.
+        _menuBarDirection = direction;
         [self setSelectedIndex:index];
     }
 }

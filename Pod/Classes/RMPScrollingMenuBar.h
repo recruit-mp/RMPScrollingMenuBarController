@@ -28,13 +28,19 @@ typedef NS_ENUM(NSUInteger, RMPScrollingMenuBarStyle) {
     RMPScrollingMenuBarStyleInfinitePaging,
 };
 
+typedef NS_ENUM(NSInteger, RMPScrollingMenuBarDirection){
+    RMPScrollingMenuBarDirectionNone,
+    RMPScrollingMenuBarDirectionLeft,
+    RMPScrollingMenuBarDirectionRight,
+};
+
 @class RMPScrollingMenuBar;
 
 /** ScrollingMenuBar's delegate protocol
  */
 @protocol RMPScrollingMenuBarDelegate <NSObject>
 
-- (void)menuBar:(RMPScrollingMenuBar*)menuBar didSelectItem:(RMPScrollingMenuBarItem*)item;
+- (void)menuBar:(RMPScrollingMenuBar*)menuBar didSelectItem:(RMPScrollingMenuBarItem*)item direction:(RMPScrollingMenuBarDirection)direction;
 
 @end
 

@@ -59,6 +59,7 @@
     CGFloat _infinitePagingOffsetX;
     NSMutableArray* _infinitePagingOrder;
     BOOL _infinitePagingIsTappedItem;
+    CGFloat _infinitePagingLastContentOffsetX;
     
 }
 
@@ -98,9 +99,9 @@
     _scrollView.frame = self.bounds;
     _scrollView.contentInset = UIEdgeInsetsZero;
     if(_style == RMPScrollingMenuBarStyleNormal){
-        _scrollView.bounds = CGRectMake(0, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
+        _scrollView.frame = CGRectMake(0, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
     }else if(_style == RMPScrollingMenuBarStyleInfinitePaging){
-        _scrollView.bounds = CGRectMake((_scrollView.frame.size.width-_infinitePagingBoundsWidth)*0.5,
+        _scrollView.frame = CGRectMake((_scrollView.frame.size.width-_infinitePagingBoundsWidth)*0.5,
                                         0, _infinitePagingBoundsWidth, _scrollView.frame.size.height);
     }
 
@@ -110,6 +111,8 @@
 
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
+    if(!self.userInteractionEnabled) return nil;
+    
     // Expands ScrollView's tachable area
     UIView* view = [_scrollView hitTest:[self convertPoint:point toView:_scrollView] withEvent:event];
     if(!view && CGRectContainsPoint(self.bounds, point)){
@@ -188,6 +191,7 @@
     CGRect f;
     
     _scrollView.pagingEnabled = NO;
+    _scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
     _scrollView.clipsToBounds = YES;
     _scrollView.delegate = nil;
     
@@ -225,7 +229,6 @@
     }
     _scrollView.contentSize = CGSizeMake(contentWidth, _scrollView.bounds.size.height);
     
-    
     if(!animated){
         // Without Animate.
         for(UIView* view in _scrollView.subviews){
@@ -254,6 +257,7 @@
     CGRect f;
     
     _scrollView.pagingEnabled = YES;
+    _scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
     _scrollView.clipsToBounds = NO;
     _scrollView.delegate = self;
     
@@ -318,6 +322,8 @@
     _scrollView.contentSize = CGSizeMake(contentWidth, _scrollView.bounds.size.height);
     _scrollView.contentOffset = CGPointMake(firstItemOriginX, 0);
     _infinitePagingOffsetX = firstItemOriginX;
+    _infinitePagingLastContentOffsetX = firstItemOriginX;
+    [_scrollView setNeedsLayout];
     
     if(!animated){
         // Without Animate.
@@ -382,15 +388,35 @@
 
 - (void)setSelectedItem:(RMPScrollingMenuBarItem *)selectedItem animated:(BOOL)animated
 {
-    _scrollView.userInteractionEnabled = NO;
+    if(_selectedItem == selectedItem)return;
+    
+    self.userInteractionEnabled = NO;
     
     if(_selectedItem){
         _selectedItem.selected = NO;
     }
+    
+    RMPScrollingMenuBarDirection direction = RMPScrollingMenuBarDirectionNone;
+    if(_style == RMPScrollingMenuBarStyleInfinitePaging){
+        NSInteger lastIndex = [_items indexOfObject:_selectedItem];
+        NSInteger nextIndex = [_items indexOfObject:selectedItem];
+        if(nextIndex - lastIndex > 0){
+            if((nextIndex - lastIndex) < _items.count/2){
+                direction = RMPScrollingMenuBarDirectionRight;
+            }else {
+                direction = RMPScrollingMenuBarDirectionLeft;
+            }
+        }else {
+            if((lastIndex - nextIndex) < _items.count/2){
+                direction = RMPScrollingMenuBarDirectionLeft;
+            }else {
+                direction = RMPScrollingMenuBarDirectionRight;
+            }
+        }
+    }
+    
     _selectedItem = selectedItem;
     _selectedItem.selected = YES;
-    
-    if(_selectedItem != selectedItem)return;
     
     // Selected item want to be displayed to center as possible.
     CGPoint offset = CGPointZero;
@@ -408,17 +434,8 @@
         
         newPosition = [_scrollView convertPoint:CGPointZero fromView:_selectedItem.button];
     }else if(_style == RMPScrollingMenuBarStyleInfinitePaging){
-        if(_infinitePagingIsTappedItem){
-            if((NSInteger)(_selectedItem.button.frame.origin.x - _itemInsets.left) < (NSInteger)_scrollView.contentOffset.x){
-                offset = CGPointMake(_infinitePagingOffsetX - _infinitePagingBoundsWidth, 0.0);
-            }else if((NSInteger)(_selectedItem.button.frame.origin.x - _itemInsets.left) > (NSInteger)_scrollView.contentOffset.x){
-                offset = CGPointMake(_infinitePagingOffsetX + _infinitePagingBoundsWidth, 0.0);
-            }else {
-                offset = _scrollView.contentOffset;
-            }
-        }else {
-            offset = CGPointMake(_selectedItem.button.frame.origin.x - _itemInsets.left, 0.0);
-        }
+        CGFloat margin = (_infinitePagingBoundsWidth - _selectedItem.width) * 0.5;
+        offset = CGPointMake(_selectedItem.button.frame.origin.x - margin, 0.0);
         [_scrollView setContentOffset:offset animated:animated];
         
         newPosition.x = _infinitePagingOffsetX + _itemInsets.left;
@@ -448,23 +465,26 @@
                              f.size.width = _selectedItem.button.frame.size.width + 6;
                              _indicatorView.frame = f;
                          } completion:^(BOOL finished) {
-                             _scrollView.userInteractionEnabled = YES;
+                             self.userInteractionEnabled = YES;
+                             if([_delegate respondsToSelector:@selector(menuBar:didSelectItem:direction:)]){
+                                 [_delegate menuBar:self didSelectItem:_selectedItem direction:direction];
+                             }
                          }];
     }else if(_style == RMPScrollingMenuBarStyleInfinitePaging){
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.36 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self reorderItemsForInfinitePaging];
+            
             CGRect f = _indicatorView.frame;
             f.origin.x = newPosition.x - 3;
             f.size.width = _selectedItem.button.frame.size.width + 6;
             _indicatorView.frame = f;
             
+            self.userInteractionEnabled = YES;
+            if([_delegate respondsToSelector:@selector(menuBar:didSelectItem:direction:)]){
+                [_delegate menuBar:self didSelectItem:_selectedItem direction:direction];
+            }
             _infinitePagingIsTappedItem = NO;
-            _scrollView.userInteractionEnabled = YES;
         });
-    }
-
-    if([_delegate respondsToSelector:@selector(menuBar:didSelectItem:)]){
-        [_delegate menuBar:self didSelectItem:_selectedItem];
     }
 }
 
@@ -500,7 +520,8 @@
 - (void)didTapMenuButton:(id)sender
 {
     for(RMPScrollingMenuBarItem* item in _items){
-        if(sender == item.button){
+        if(sender == item.button && item != _selectedItem){
+            NSLog(@"did tap menu bar item");
             _infinitePagingIsTappedItem = YES;
             self.selectedItem = item;
             break;
@@ -510,7 +531,7 @@
 
 - (void)reorderItemsForInfinitePaging
 {
-    CGFloat diffX = _scrollView.contentOffset.x - _infinitePagingOffsetX;
+    CGFloat diffX = (NSInteger)_scrollView.contentOffset.x - (NSInteger)_infinitePagingOffsetX;
     NSInteger moveCount = ((NSInteger)fabs(diffX)/(NSInteger)_infinitePagingBoundsWidth);
     if(diffX > 0){
         // right item
@@ -544,15 +565,20 @@
         index++;
     }
     
-    _scrollView.contentOffset = CGPointMake(_infinitePagingOffsetX, 0);
+    _scrollView.contentOffset = CGPointMake(_selectedItem.button.frame.origin.x - (_infinitePagingBoundsWidth - _selectedItem.width) * 0.5, 0);
 }
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self reorderItemsForInfinitePaging];
+    if(_infinitePagingLastContentOffsetX == scrollView.contentOffset.x){
+        return;
+    }
     
     if(!_infinitePagingIsTappedItem){
+        [self reorderItemsForInfinitePaging];
+        _scrollView.contentOffset = CGPointMake(_infinitePagingOffsetX, 0);
+        
         NSInteger index = 0;
         RMPScrollingMenuBarItem* selectedItem = nil;
         for(NSValue* val in _infinitePagingOrder){
@@ -568,6 +594,7 @@
             [self setSelectedItem:selectedItem animated:YES];
         }
     }
-    _infinitePagingIsTappedItem = NO;
+    
+    _infinitePagingLastContentOffsetX = scrollView.contentOffset.x;
 }
 @end
