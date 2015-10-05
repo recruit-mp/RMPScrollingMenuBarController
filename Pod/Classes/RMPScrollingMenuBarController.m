@@ -33,6 +33,11 @@
     RMPScrollingMenuBarDirection _menuBarDirection;
 }
 
+- (instancetype)init {
+    self = [super init];
+    _menuBar = [[RMPScrollingMenuBar alloc] init];
+    return self;
+}
 
 - (void)loadView
 {
@@ -45,11 +50,11 @@
     CGRect rect;
     // Menu bar
     rect = CGRectMake(0, 0, self.view.bounds.size.width, kRMPMenuBarDefaultBarHeight);
-    RMPScrollingMenuBar* menuBar = [[RMPScrollingMenuBar alloc] initWithFrame:rect];
-    _menuBar = menuBar;
+    _menuBar.frame = rect;
+ 
     CGFloat offset = 32.0f / 320.0f * [[UIScreen mainScreen] bounds].size.width;
     _menuBar.itemInsets = UIEdgeInsetsMake(2, offset, 0, offset);
-    [self.view addSubview:menuBar];
+    [self.view addSubview:_menuBar];
     [_menuBar sizeToFit];
     rect = _menuBar.frame;
     rect.origin.y = [self.topLayoutGuide length];
@@ -80,7 +85,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
