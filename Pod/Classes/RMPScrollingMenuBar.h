@@ -97,5 +97,6 @@ typedef NS_ENUM(NSInteger, RMPScrollingMenuBarDirection){
  */
 - (void)scrollByRatio:(CGFloat)ratio from:(CGFloat)from;
 
+- (void)setup;
 
 @end

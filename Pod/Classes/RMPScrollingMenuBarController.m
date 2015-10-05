@@ -51,6 +51,7 @@
     // Menu bar
     rect = CGRectMake(0, 0, self.view.bounds.size.width, kRMPMenuBarDefaultBarHeight);
     _menuBar.frame = rect;
+    [_menuBar setup];
  
     CGFloat offset = 32.0f / 320.0f * [[UIScreen mainScreen] bounds].size.width;
     _menuBar.itemInsets = UIEdgeInsetsMake(2, offset, 0, offset);
