@@ -528,6 +528,12 @@
     _barHeight = barHeight;
     
     [self sizeToFit];
+
+    // indicatorView repositioning.
+    CGRect frame = _indicatorView.frame;
+    frame.origin.y = self.bounds.size.height - 4;
+    _indicatorView.frame = frame;
+    
     [self layoutIfNeeded];
 }
 
