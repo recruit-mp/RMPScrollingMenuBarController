@@ -38,17 +38,17 @@ class PageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var f = self.view.bounds;
-        f.size.height = 32;
+        var f = self.view.bounds
+        f.size.height = 32
         messageLabel = UILabel(frame: f)
         messageLabel?.numberOfLines = 0
         messageLabel?.textColor = UIColor.whiteColor()
         messageLabel?.textAlignment = .Center
-        messageLabel?.center = CGPointMake(self.view.bounds.size.width * 0.5, self.view.bounds.size.height * 0.5);
+        messageLabel?.center = CGPointMake(self.view.bounds.size.width * 0.5, self.view.bounds.size.height * 0.5)
         self.view.addSubview(messageLabel!)
         
         if message != nil {
-            messageLabel?.text = message;
+            messageLabel?.text = message
         }
 
     }

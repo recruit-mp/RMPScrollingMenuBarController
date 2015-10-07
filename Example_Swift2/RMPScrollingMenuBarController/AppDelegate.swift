@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.setup();
+        self.setup()
 
         return true
     }
@@ -68,9 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Customize appearance of menu bar.
         menuController.view.backgroundColor = UIColor.whiteColor()
         menuController.menuBar.indicatorColor = UIColor.blueColor()
-        //menuController.menuBar.style = .InfinitePaging;
-        //menuController.menuBar.showsIndicator = false;
-        //menuController.menuBar.showsSeparatorLine = false;
+        //menuController.menuBar.style = .InfinitePaging
+        //menuController.menuBar.showsIndicator = false
+        //menuController.menuBar.showsSeparatorLine = false
 
         // Set ViewControllers for menu bar controller
         var viewControllers: [PageViewController] = []
