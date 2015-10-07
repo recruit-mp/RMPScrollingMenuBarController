@@ -21,8 +21,8 @@
 		923619241A5A3C3F00A3754E /* RMPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 923619211A5A3C3F00A3754E /* RMPAppDelegate.m */; };
 		923619251A5A3C3F00A3754E /* RMPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 923619231A5A3C3F00A3754E /* RMPViewController.m */; };
 		923619281A5A7E9100A3754E /* RMPPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 923619271A5A7E9100A3754E /* RMPPageViewController.m */; };
-		B8B5B0AEF81FEEFEEB211523 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73629C15F21DCFD6D407690F /* libPods-Tests.a */; };
-		E39F25B61A53DF1DC5CA4EA6 /* libPods-RMPScrollingMenuBarController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EE9C09C0AA72C99BEE9D49 /* libPods-RMPScrollingMenuBarController.a */; };
+		B3F3BD4A521683177F4A6A54 /* Pods_RMPScrollingMenuBarController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D95260CC24310220D239D6 /* Pods_RMPScrollingMenuBarController.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BA82FA671DAD5D210640A226 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C063F9BDDBBC03193D8191E5 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		13CAEB25BC5ABB658E4BB8EE /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2DB96FC0ECB7CE0221053665 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		42EE9C09C0AA72C99BEE9D49 /* libPods-RMPScrollingMenuBarController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RMPScrollingMenuBarController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5093C0AB2CAB29372D4D2287 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* RMPScrollingMenuBarController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMPScrollingMenuBarController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -55,7 +54,6 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		73629C15F21DCFD6D407690F /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		923619201A5A3C3F00A3754E /* RMPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPAppDelegate.h; path = RMPScrollingMenuBarController/Classes/RMPAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		923619211A5A3C3F00A3754E /* RMPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPAppDelegate.m; path = RMPScrollingMenuBarController/Classes/RMPAppDelegate.m; sourceTree = SOURCE_ROOT; };
 		923619221A5A3C3F00A3754E /* RMPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPViewController.h; path = RMPScrollingMenuBarController/Classes/RMPViewController.h; sourceTree = SOURCE_ROOT; };
@@ -63,8 +61,10 @@
 		923619261A5A7E9100A3754E /* RMPPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPPageViewController.h; path = RMPScrollingMenuBarController/Classes/RMPPageViewController.h; sourceTree = SOURCE_ROOT; };
 		923619271A5A7E9100A3754E /* RMPPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPPageViewController.m; path = RMPScrollingMenuBarController/Classes/RMPPageViewController.m; sourceTree = SOURCE_ROOT; };
 		BCEAD3703A99B56D3E11E103 /* Pods-RMPScrollingMenuBarController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMPScrollingMenuBarController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMPScrollingMenuBarController/Pods-RMPScrollingMenuBarController.debug.xcconfig"; sourceTree = "<group>"; };
+		C063F9BDDBBC03193D8191E5 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6503C50F46B65F76DB81523 /* Pods-RMPScrollingMenuBarController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMPScrollingMenuBarController.release.xcconfig"; path = "Pods/Target Support Files/Pods-RMPScrollingMenuBarController/Pods-RMPScrollingMenuBarController.release.xcconfig"; sourceTree = "<group>"; };
 		F20DC15B0CC036E8660412DF /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		F3D95260CC24310220D239D6 /* Pods_RMPScrollingMenuBarController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMPScrollingMenuBarController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5BA9D9C65B83CF7166A3105 /* RMPScrollingMenuBarController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RMPScrollingMenuBarController.podspec; path = ../RMPScrollingMenuBarController.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +76,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				E39F25B61A53DF1DC5CA4EA6 /* libPods-RMPScrollingMenuBarController.a in Frameworks */,
+				B3F3BD4A521683177F4A6A54 /* Pods_RMPScrollingMenuBarController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +87,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				B8B5B0AEF81FEEFEEB211523 /* libPods-Tests.a in Frameworks */,
+				BA82FA671DAD5D210640A226 /* Pods_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,8 +122,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				42EE9C09C0AA72C99BEE9D49 /* libPods-RMPScrollingMenuBarController.a */,
-				73629C15F21DCFD6D407690F /* libPods-Tests.a */,
+				F3D95260CC24310220D239D6 /* Pods_RMPScrollingMenuBarController.framework */,
+				C063F9BDDBBC03193D8191E5 /* Pods_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -215,6 +215,7 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				A11710F6E36168D668D05A5B /* Copy Pods Resources */,
+				3393B09CF4B00531561F3908 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -234,6 +235,7 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				BFDF308D2CA9EEE85AA5A60D /* Copy Pods Resources */,
+				3BAEBFBB6BDD20B3270B033A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,6 +315,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3393B09CF4B00531561F3908 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RMPScrollingMenuBarController/Pods-RMPScrollingMenuBarController-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3BAEBFBB6BDD20B3270B033A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		50C8B00C5DF5A9F8A61780E2 /* Check Pods Manifest.lock */ = {
