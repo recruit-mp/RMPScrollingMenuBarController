@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'RMPScrollingMenuBarController_Example', :exclusive => true do
+  pod "RMPScrollingMenuBarController", :path => "../"
+end
+
+target 'RMPScrollingMenuBarController_Tests', :exclusive => true do
+  pod "RMPScrollingMenuBarController", :path => "../"
+
+  # Comment outed because maybe FBSnapshotTestCase isn't support Swift2.
+  #pod 'FBSnapshotTestCase'
+end
