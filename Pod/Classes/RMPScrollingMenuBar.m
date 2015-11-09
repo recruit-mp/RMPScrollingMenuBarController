@@ -493,9 +493,6 @@
                              _indicatorView.frame = f;
                          } completion:^(BOOL finished) {
                              self.userInteractionEnabled = YES;
-                             if([_delegate respondsToSelector:@selector(menuBar:didSelectItem:direction:)]){
-                                 [_delegate menuBar:self didSelectItem:_selectedItem direction:direction];
-                             }
                          }];
     }else if(_style == RMPScrollingMenuBarStyleInfinitePaging){
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -513,6 +510,12 @@
             _infinitePagingIsTappedItem = NO;
         });
     }
+
+    // ************* extension *************
+    if([_delegate respondsToSelector:@selector(menuBar:didSelectItem:direction:)]){
+        [_delegate menuBar:self didSelectItem:_selectedItem direction:direction];
+    }
+    // *************************************
 }
 
 - (void)setIndicatorColor:(UIColor *)indicatorColor
