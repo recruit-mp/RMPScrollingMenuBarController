@@ -113,6 +113,9 @@
     // Remove animations
     [fromViewController.view.layer removeAllAnimations];
     [toViewController.view.layer removeAllAnimations];
+    
+    _transitionContext.containerView.layer.beginTime = 0.0;
+    _transitionContext.containerView.layer.timeOffset = 0.0;
 }
 
 
